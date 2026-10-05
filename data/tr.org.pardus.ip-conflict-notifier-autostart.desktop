@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Pardus IP Conflict Notifier
+Name[tr]=Pardus IP Çakışması Bildiricisi
+Exec=/usr/bin/pardus-ip-conflict-notifier
+NoDisplay=true
+Terminal=false
+X-GNOME-Autostart-enabled=true

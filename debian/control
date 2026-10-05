@@ -1,0 +1,19 @@
+Source: pardus-ip-conflict-notifier
+Section: net
+Priority: optional
+Maintainer: Emel Öztürk <emel.ozturk@pardus.org.tr>
+Build-Depends: debhelper-compat (= 13), dh-python, python3-all, python3-setuptools, gettext
+Standards-Version: 4.6.1
+Homepage: https://github.com/pardus/pardus-ip-conflict-notifier
+
+Package: pardus-ip-conflict-notifier
+Architecture: all
+Depends: ${misc:Depends},
+         ${python3:Depends},
+         python3-systemd,
+         libnotify-bin
+Recommends: ipwatchd,
+            network-manager
+Description: Pardus IP Conflict Notifier.
+ Watches NetworkManager and ipwatchd journal entries and shows a
+ desktop notification when an IPv4 address conflict is detected.

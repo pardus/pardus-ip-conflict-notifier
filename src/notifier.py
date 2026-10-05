@@ -13,11 +13,28 @@ Policy:
 """
 
 import ipaddress
+import locale
+import os
 import re
 import subprocess
 import time
 
 from systemd import journal
+
+# Development: ../locale, Production: /usr/share/locale
+localedir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../locale')
+if not os.path.exists(localedir):
+    localedir = '/usr/share/locale'
+
+# No GTK here to call setlocale() implicitly; gettext needs it.
+try:
+    locale.setlocale(locale.LC_ALL, '')
+except locale.Error:
+    pass
+
+locale.bindtextdomain('pardus-ip-conflict-notifier', localedir)
+locale.textdomain('pardus-ip-conflict-notifier')
+_ = locale.gettext
 
 
 DEBOUNCE_SECONDS = 60
@@ -172,11 +189,11 @@ def parse_entry(entry):
 def notify(iface, ip, mac):
     """Show the desktop notification. Returns True only on confirmed success."""
 
-    body = f"{ip} IP adresi ağdaki başka bir cihaz tarafından kullanılıyor."
-    body += f"\nArayüz: {iface}"
+    body = _("IP address {} is being used by another device on the network.").format(ip)
+    body += "\n" + _("Interface: {}").format(iface)
 
     if mac:
-        body += f"\nÇakışan cihazın donanım adresi: {mac}"
+        body += "\n" + _("Hardware address of the conflicting device: {}").format(mac)
 
     try:
         result = subprocess.run(
@@ -185,7 +202,7 @@ def notify(iface, ip, mac):
                 "-u", "critical",
                 "-i", "dialog-warning",
                 "-a", "Pardus",
-                "IP Adresi Çakışması",
+                _("IP Address Conflict"),
                 body,
             ],
             check=False,

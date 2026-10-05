@@ -1,0 +1,6 @@
+pardus-ip-conflict-notifier (0.1.0) unstable; urgency=medium
+
+  * Initial release
+  * Add desktop notifier for IPv4 address conflicts - #PARDUS-1866
+
+ -- Emel Öztürk <emel.ozturk@pardus.org.tr>  Mon, 05 Oct 2026 14:50:00 +0300
