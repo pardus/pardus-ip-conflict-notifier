@@ -1,3 +1,9 @@
+pardus-ip-conflict-notifier (1.0.0) unstable; urgency=medium
+
+  * Replace autostart journal watcher with an ipwatchd-gnotify drop-in
+
+ -- Emel Öztürk <emel.ozturk@pardus.org.tr>  Fri, 09 Oct 2026 16:12:11 +0300
+
 pardus-ip-conflict-notifier (0.1.0) unstable; urgency=medium
 
   * Initial release
