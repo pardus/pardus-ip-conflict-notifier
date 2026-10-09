@@ -1,0 +1,2 @@
+usr/bin/pardus-ip-conflict-notifier usr/sbin/ipwatchd-gnotify
+usr/share/man/man1/pardus-ip-conflict-notifier.1 usr/share/man/man1/ipwatchd-gnotify.1

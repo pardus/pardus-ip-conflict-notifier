@@ -1,0 +1,27 @@
+Source: pardus-ip-conflict-notifier
+Section: net
+Priority: optional
+Maintainer: Emel Öztürk <emel.ozturk@pardus.org.tr>
+Build-Depends: debhelper-compat (= 13), dh-python, python3-all, python3-setuptools, gettext
+Standards-Version: 4.6.2
+Homepage: https://github.com/pardus/pardus-ip-conflict-notifier
+Rules-Requires-Root: no
+
+
+Package: pardus-ip-conflict-notifier
+Architecture: all
+Depends: ${misc:Depends},
+         ${python3:Depends},
+         ipwatchd,
+         libnotify-bin,
+         systemd,
+         util-linux
+Provides: ipwatchd-gnotify
+Conflicts: ipwatchd-gnotify
+Replaces: ipwatchd-gnotify
+Description: Desktop notification for IP address conflicts
+ Shows a desktop notification to every local graphical user when ipwatchd
+ detects an IPv4 address conflict, similar to the Windows warning.
+ .
+ Replaces ipwatchd-gnotify: installs /usr/sbin/ipwatchd-gnotify, which the
+ stock /usr/sbin/ipwatchd-script already calls. No configuration is changed.
