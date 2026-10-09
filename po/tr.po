@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-05 14:53+0300\n"
+"POT-Creation-Date: 2026-10-09 14:56+0300\n"
 "PO-Revision-Date: 2026-10-05 14:55+0300\n"
 "Last-Translator: Emel Öztürk <emel.ozturk@pardus.org.tr>\n"
 "Language-Team: Turkish <dev@pardus.org.tr>\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
-#: src/notifier.py:192
+#: src/Notifier.py:65
 msgid "IP address {} is being used by another device on the network."
 msgstr "{} IP adresi ağdaki başka bir cihaz tarafından kullanılıyor."
 
-#: src/notifier.py:193
+#: src/Notifier.py:68
 msgid "Interface: {}"
 msgstr "Arayüz: {}"
 
-#: src/notifier.py:196
+#: src/Notifier.py:69
 msgid "Hardware address of the conflicting device: {}"
 msgstr "Çakışan cihazın donanım adresi: {}"
 
-#: src/notifier.py:205
+#: src/Notifier.py:73
 msgid "IP Address Conflict"
 msgstr "IP Adresi Çakışması"

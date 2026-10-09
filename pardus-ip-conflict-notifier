@@ -2,6 +2,6 @@
 
 import sys
 sys.path.insert(0, '/usr/share/pardus/pardus-ip-conflict-notifier/src/')
-import notifier
+import Main
 
-raise SystemExit(notifier.main() or 0)
+sys.exit(Main.main())

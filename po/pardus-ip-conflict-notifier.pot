@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-05 14:53+0300\n"
+"POT-Creation-Date: 2026-10-09 14:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/notifier.py:192
+#: src/Notifier.py:65
 msgid "IP address {} is being used by another device on the network."
 msgstr ""
 
-#: src/notifier.py:193
+#: src/Notifier.py:68
 msgid "Interface: {}"
 msgstr ""
 
-#: src/notifier.py:196
+#: src/Notifier.py:69
 msgid "Hardware address of the conflicting device: {}"
 msgstr ""
 
-#: src/notifier.py:205
+#: src/Notifier.py:73
 msgid "IP Address Conflict"
 msgstr ""

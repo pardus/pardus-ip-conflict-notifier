@@ -1,0 +1,101 @@
+.TH PARDUS-IP-CONFLICT-NOTIFIER 1 "October 2026" "pardus-ip-conflict-notifier" "User Commands"
+.SH NAME
+pardus-ip-conflict-notifier \- desktop notification for IP address conflicts
+.SH SYNOPSIS
+.B pardus-ip-conflict-notifier
+.RB [ \-\-debug ]
+.RB [ \-\-broadcast ]
+.B \-\-title
+.I title
+.B \-\-message
+.I message
+.br
+.B pardus-ip-conflict-notifier
+.BR \-\-version | \-\-help
+.SH DESCRIPTION
+.B pardus-ip-conflict-notifier
+shows a desktop notification when
+.BR ipwatchd (8)
+detects an IPv4 address conflict.
+.PP
+It is a drop-in replacement for
+.BR ipwatchd-gnotify ,
+which is installed as a symbolic link to this program.
+The default
+.BR ipwatchd-script (1)
+already calls
+.BR /usr/sbin/ipwatchd-gnotify ,
+so no configuration is needed:
+.PP
+.RS
+.nf
+ipwatchd (root)
+  -> /usr/sbin/ipwatchd-script "dev" "ip" "mac"
+    -> /usr/sbin/ipwatchd-gnotify --broadcast ...
+      -> notification for every local graphical user
+.fi
+.RE
+.PP
+When the message has the format produced by
+.BR ipwatchd-script ,
+the notification is shown in the system language with the IP address,
+interface and hardware address of the conflicting device.
+Any other message is shown as given.
+.PP
+Desktop users need no extra privileges.
+.SH OPTIONS
+.TP
+.BR \-d ", " \-\-debug
+Print the sessions found and the commands run to standard output.
+.TP
+.BR \-b ", " \-\-broadcast
+Send the notification to every local X11 or Wayland session reported by
+.BR loginctl (1),
+once per user. Requires root privileges.
+Without this option the notification is shown only in the caller's own session.
+.TP
+.BR \-t ", " \-\-title " " \fItitle\fR
+Title of the notification.
+.TP
+.BR \-m ", " \-\-message " " \fImessage\fR
+Text of the notification.
+.TP
+.BR \-v ", " \-\-version
+Print the program version and exit.
+.TP
+.BR \-h ", " \-\-help
+Print a short help message and exit.
+.SH EXIT STATUS
+.TP
+.B 0
+The notification was sent to every target session.
+.TP
+.B 1
+At least one notification could not be sent, or
+.B \-\-broadcast
+was used without root privileges.
+.TP
+.B 2
+Invalid command line.
+.SH EXAMPLES
+Test the whole notification path as ipwatchd would run it:
+.PP
+.RS
+.nf
+sudo /usr/sbin/ipwatchd-gnotify --debug --broadcast \e
+    --title "IP conflict occurred" \e
+    --message "MAC address 8:0:27:1:2:3 causes IP conflict with address 10.0.2.15 set on interface enp0s3"
+.fi
+.RE
+.SH NOTES
+Only conflicts detected by
+.BR ipwatchd (8)
+at runtime are reported. A conflict detected by NetworkManager while
+activating a connection, where the address is never configured, is not
+visible to ipwatchd.
+.SH SEE ALSO
+.BR ipwatchd (8),
+.BR ipwatchd.conf (5),
+.BR ipwatchd-script (1),
+.BR notify-send (1),
+.BR loginctl (1)

@@ -40,16 +40,12 @@ if os.path.exists(changelog):
     f.close()
 
 data_files = [
-    (
-        "/usr/share/pardus/pardus-ip-conflict-notifier/src",
-        [
-            "src/notifier.py",
-            "src/__version__",
-        ],
-    ),
-    ("/etc/xdg/autostart",
-        ["data/tr.org.pardus.ip-conflict-notifier-autostart.desktop"]
-    ),
+    ("/usr/bin", ["pardus-ip-conflict-notifier"]),
+    ("/usr/share/pardus/pardus-ip-conflict-notifier/src",
+     ["src/Main.py",
+      "src/Notifier.py",
+      "src/__version__"]),
+    ("/usr/share/man/man1", ["data/pardus-ip-conflict-notifier.1"]),
 ] + create_mo_files()
 
 
@@ -58,12 +54,11 @@ setup(
     version=version,
     packages=[],
     py_modules=[],
-    scripts=["pardus-ip-conflict-notifier"],
     data_files=data_files,
     author="Emel Öztürk",
     author_email="emel.ozturk@pardus.org.tr",
     description="Desktop notifier for IPv4 address conflicts",
-    license="MIT",
+    license="GPLv3",
     keywords="pardus-ip-conflict-notifier, ip, conflict",
     url="https://github.com/pardus/pardus-ip-conflict-notifier",
 )
